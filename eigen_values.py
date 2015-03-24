@@ -2,6 +2,19 @@ import numpy as np
 
 THRESHOLD = 0.001
 
+def main():
+    file = open("in_matrix", "r")
+    size = int(file.readline().strip("\n"))
+    lines = file.read().split("\n")
+    a = np.zeros(shape=(size,size))
+    for i in range(size):
+        a[i] = map(float, lines[i].split(" "))
+    print("Input Matrix")
+    print(a)
+    e = eigen(a)
+    print("Eigen Values")
+    print(e)
+
 def gs(inp):
     r = np.zeros(shape=(len(inp), len(inp)))
     q = np.zeros(shape=(len(inp), len(inp)))
@@ -41,17 +54,5 @@ def values(matrix):
         res[i] = matrix[i][i]
     return res
 
-file = open("in.txt", "r")
-size = int(file.readline().strip("\n"))
-print(size)
-lines = file.read().split("\n")
-print(lines)
-a = np.zeros(shape=(size,size))
-#a = np.zeros(shape=(size(lines),size(lines)))
-print(lines[0].split(" "))
-for i in range(size):
-    a[i] = map(int, lines[i].split(" "))
-print(a)
-e = eigen(a)
-
-print(e)
+if __name__ == '__main__':
+    main()
